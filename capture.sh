@@ -35,7 +35,6 @@ function banner() {
 }
 
 function main_menu() {
-    dependancies
     clear
     banner 
 
