@@ -35,6 +35,7 @@ function banner() {
 }
 
 function main_menu() {
+    dependancies
     clear
     banner 
 
@@ -59,7 +60,20 @@ function main_menu() {
         echo -e "\n\e[4mEnter name of output file\e[0m " ;
         read -p "File: " file ;
 
-        ffmpeg -f v4l2 -framerate $framerate -video_size $video_size -i $video_dev -f alsa -ac 2 -i $audio_dev ${directory}${file}${video_ext} ;
+        clear ;
+
+        echo  -e "\033[5mRecording in Progress...\033[0m" ;
+
+        echo  -e "\nPress Ctrl+C to stop recording" ;
+
+        tput civis ;
+
+        ffmpeg -f v4l2 -framerate $framerate -video_size $video_size -i $video_dev -f alsa -ac 2 -i $audio_dev ${directory}${file}${video_ext} &> /dev/null ;
+
+        clear ;
+
+        tput cnorm ;
+
         ;;
 
         2) 
@@ -69,7 +83,20 @@ function main_menu() {
         echo -e "\n\e[4mEnter name of output file\e[0m " ;
         read -p "File: " file ;
 
-        ffmpeg -f v4l2 -framerate $framerate -video_size $video_size -i $video_dev ${directory}${file}${video_ext} ;
+        clear ;
+
+        echo  -e "\033[5mRecording in Progress...\033[0m" ;
+
+        echo  -e "\nPress Ctrl+C to stop recording" ;
+
+        tput civis ;
+
+        ffmpeg -f v4l2 -framerate $framerate -video_size $video_size -i $video_dev ${directory}${file}${video_ext} &> /dev/null ;
+
+        clear ;
+
+        tput cnorm ;
+
         ;;
 
         3)
@@ -79,7 +106,20 @@ function main_menu() {
         echo -e "\n\e[4mEnter name of output file\e[0m " ;
         read -p "File: " file ;
 
-        ffmpeg -f alsa -ac 2 -i $audio_dev ${directory}${file}${audio_ext} ;
+        clear ;
+
+        echo  -e "\033[5mRecording in Progress...\033[0m" ;
+
+        echo  -e "\nPress Ctrl+C to stop recording" ;
+
+        tput civis ;
+
+        ffmpeg -f alsa -ac 2 -i $audio_dev ${directory}${file}${audio_ext} &> /dev/null ;
+        
+        clear ;
+
+        tput cnorm ;
+
         ;;
 
         4)
@@ -89,7 +129,20 @@ function main_menu() {
         echo -e "\n\e[4mEnter name of output file\e[0m " ;
         read -p "File: " file ;
 
-        ffmpeg -f x11grab -framerate $framerate -s $resolution -i :0.0 -f alsa -ac 2 -i $audio_dev ${directory}${file}${video_ext} ;
+        clear ;
+
+        echo  -e "\033[5mRecording in Progress...\033[0m" ;
+
+        echo  -e "\nPress Ctrl+C to stop recording" ;
+
+        tput civis ;
+
+        ffmpeg -f x11grab -framerate $framerate -s $resolution -i :0.0 -f alsa -ac 2 -i $audio_dev ${directory}${file}${video_ext} &> /dev/null ;
+        
+        clear ;
+
+        tput cnorm ;
+
         ;;
 
         5)
@@ -99,7 +152,20 @@ function main_menu() {
         echo -e "\n\e[4mEnter name of output file\e[0m " ;
         read -p "File: " file ;
 
-        ffmpeg -f x11grab -framerate $framerate -s $resoltuion -i :0.0 ${directory}${file}${video_ext} ;
+        clear ;
+
+        echo  -e "\033[5mRecording in Progress...\033[0m" ;
+
+        echo  -e "\nPress Ctrl+C to stop recording" ;
+
+        tput civis ;
+
+        ffmpeg -f x11grab -framerate $framerate -s $resolution -i :0.0 ${directory}${file}${video_ext} &> /dev/null ;
+        
+        clear ;
+
+        tput cnorm ;
+
         ;;
 
         0) 
